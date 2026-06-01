@@ -1,19 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Community Event Portal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    line-height:1.6;
+}
+
+/* Header */
+header{
+    background:linear-gradient(90deg,#007bff,#00c6ff);
+    color:white;
+    text-align:center;
+    padding:25px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+}
+
+header h1{
+    font-size:35px;
+}
+
+/* Navigation */
+nav{
+    background:#222;
+    text-align:center;
+    padding:15px;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:10px;
+    padding:10px 18px;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:#007bff;
+}
+
+/* Sections */
+section{
+    padding:30px;
+}
+
+/* Welcome Banner */
+#welcomeBanner{
+    background:linear-gradient(90deg,#007bff,#00c6ff);
+    color:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+.highlight{
+    background:#fff3cd;
+    color:#d35400;
+    padding:10px;
+    margin-top:15px;
+    border-left:5px solid orange;
+    font-weight:bold;
+}
+
+/* Gallery */
+.gallery-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    text-align:center;
+}
+
+td{
+    padding:15px;
+}
+
+.event-image{
+    width:220px;
+    height:150px;
+    border:4px solid #007bff;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.event-image:hover{
+    transform:scale(1.05);
+}
+
+figcaption{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+/* Form */
+form{
+    width:60%;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+label{
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#218838;
+}
+
+#confirmation{
+    display:block;
+    margin-top:15px;
+    color:green;
+    font-weight:bold;
+}
+
+#feeDisplay{
+    color:#007bff;
+    font-weight:bold;
+}
+
+/* Video */
+video{
+    display:block;
+    margin:auto;
+    border:5px solid #444;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Geolocation */
+#location{
+    background:#eef;
+    padding:10px;
+    border-radius:5px;
+    margin-top:15px;
+}
+
+/* Footer */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+
+</style>
 </head>
+
 <body>
-    <header>
-        <!--this is an header section-->
-    </header>
-    <nav>
-        <!--this is a navigation section-->
-    </nav>
-    <main>
-        <!--this is a main section-->
-    </main>
+
+<!-- Header -->
+<header>
+    <h1>🏛 Local Community Event Portal</h1>
+    <p>Connecting Residents with Community Activities</p>
+</header>
+
+<!-- Navigation -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="help.html" target="_blank">Help</a>
+</nav>
+
+<!-- Main -->
+<section id="home">
+
+    <div id="welcomeBanner">
+        Welcome Resident!
+
+        <span style="color:red;font-weight:bold;">
+            Special Offer: Free Entry Today!
+        </span>
+    </div>
+
+    <p class="highlight">
+        Register now for upcoming community events and enjoy exclusive benefits.
+    </p>
+
+</section>
+
+<!-- Events Gallery -->
+<section id="events">
+
+    <h2 class="gallery-title">Community Event Gallery</h2>
+
+    <table>
+
+        <tr>
+
+            <td>
+                <figure>
+                    <img src="https://picsum.photos/220/150?1"
+                         alt="Music Festival"
+                         title="Music Festival"
+                         class="event-image"
+                         ondblclick="enlargeImage(this)">
+                    <figcaption>Music Festival</figcaption>
+                </figure>
+            </td>
+
+            <td>
+                <figure>
+                    <img src="https://picsum.photos/220/150?2"
+                         alt="Food Fair"
+                         title="Food Fair"
+                         class="event-image"
+                         ondblclick="enlargeImage(this)">
+                    <figcaption>Food Fair</figcaption>
+                </figure>
+            </td>
+
+            <td>
+                <figure>
+                    <img src="https://picsum.photos/220/150?3"
+                         alt="Art Exhibition"
+                         title="Art Exhibition"
+                         class="event-image"
+                         ondblclick="enlargeImage(this)">
+                    <figcaption>Art Exhibition</figcaption>
+                </figure>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                <figure>
+                    <img src="https://picsum.photos/220/150?4"
+                         alt="Book Fair"
+                         title="Book Fair"
+                         class="event-image"
+                         ondblclick="enlargeImage(this)">
+                    <figcaption>Book Fair</figcaption>
+                </figure>
+            </td>
+
+            <td>
+                <figure>
+                    <img src="https://picsum.photos/220/150?5"
+                         alt="Sports Day"
+                         title="Sports Day"
+                         class="event-image"
+                         ondblclick="enlargeImage(this)">
+                    <figcaption>Sports Day</figcaption>
+                </figure>
+            </td>
+
+            <td>
+                <figure>
+                    <img src="https://picsum.photos/220/150?6"
+                         alt="Charity Run"
+                         title="Charity Run"
+                         class="event-image"
+                         ondblclick="enlargeImage(this)">
+                    <figcaption>Charity Run</figcaption>
+                </figure>
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<!-- Registration Form -->
+<section>
+
+<h2 align="center">Event Registration Form</h2>
+
+<form id="registrationForm">
+
+<label>Name</label>
+<input type="text"
+       placeholder="Enter Your Name"
+       required
+       autofocus>
+
+<label>Email</label>
+<input type="email"
+       placeholder="Enter Email"
+       required>
+
+<label>Date</label>
+<input type="date"
+       required>
+
+<label>Phone Number</label>
+<input type="text"
+       id="phone"
+       placeholder="Enter Phone Number"
+       onblur="validatePhone()">
+
+<label>Event Type</label>
+<select id="eventType" onchange="showFee()">
+
+<option value="">Select Event</option>
+<option value="100">Music Festival</option>
+<option value="150">Food Fair</option>
+<option value="200">Sports Day</option>
+
+</select>
+
+<p id="feeDisplay"></p>
+
+<label>Message / Feedback</label>
+<textarea id="feedback"
+          rows="5"
+          placeholder="Enter Message"
+          onkeyup="countCharacters()"></textarea>
+
+<p>Characters Typed: <span id="charCount">0</span></p>
+
+<button type="button"
+        onclick="submitForm()">
+    Register
+</button>
+
+<output id="confirmation"></output>
+
+</form>
+
+</section>
+
+<!-- Video Section -->
+<section>
+
+<h2 align="center">Event Promo Video</h2>
+
+<video width="700"
+       controls
+       oncanplay="videoReady()">
+
+<source src="haldi.mp4" type="video/mp4">
+
+</video>
+
+<p align="center" id="videoMessage"></p>
+
+</section>
+
+<!-- Preferences -->
+<section>
+
+<h2>User Preferences</h2>
+
+<button onclick="clearPreferences()">
+    Clear Preferences
+</button>
+
+</section>
+
+<!-- Geolocation -->
+<section>
+
+<h2>Find Nearby Events</h2>
+
+<button onclick="findLocation()">
+    Find Nearby Events
+</button>
+
+<p id="location"></p>
+
+</section>
+
+<!-- Contact -->
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<p>Email: support@communityportal.com</p>
+<p>Phone: +91 9876543210</p>
+
+</section>
+
+<!-- Footer -->
+<footer>
+
+<p>© 2026 Local Community Event Portal</p>
+
+</footer>
+
+<script>
+
+function validatePhone(){
+
+    let phone=document.getElementById("phone").value;
+
+    if(phone.length<10){
+        alert("Invalid Phone Number");
+    }
+}
+
+function showFee(){
+
+    let fee=document.getElementById("eventType").value;
+
+    document.getElementById("feeDisplay").innerHTML=
+    "Selected Event Fee: ₹"+fee;
+
+    localStorage.setItem("preferredEvent",fee);
+}
+
+function submitForm(){
+
+    document.getElementById("confirmation").innerHTML=
+    "Registration Submitted Successfully!";
+}
+
+function enlargeImage(img){
+
+    img.style.width="320px";
+    img.style.height="220px";
+}
+
+function countCharacters(){
+
+    let count=
+    document.getElementById("feedback").value.length;
+
+    document.getElementById("charCount").innerHTML=count;
+}
+
+function videoReady(){
+
+    document.getElementById("videoMessage").innerHTML=
+    "Video ready to play";
+}
+
+function clearPreferences(){
+
+    localStorage.clear();
+    sessionStorage.clear();
+
+    alert("Preferences Cleared");
+}
+
+window.onload=function(){
+
+    let saved=
+    localStorage.getItem("preferredEvent");
+
+    if(saved){
+
+        document.getElementById("eventType").value=saved;
+
+        showFee();
+    }
+};
+
+function findLocation(){
+
+    let options={
+        enableHighAccuracy:true,
+        timeout:5000
+    };
+
+    navigator.geolocation.getCurrentPosition(
+        success,
+        error,
+        options
+    );
+}
+
+function success(position){
+
+    document.getElementById("location").innerHTML=
+    "Latitude: "+
+    position.coords.latitude+
+    "<br>Longitude: "+
+    position.coords.longitude;
+}
+
+function error(err){
+
+    document.getElementById("location").innerHTML=
+    "Location Error: "+err.message;
+}
+
+window.onbeforeunload=function(){
+
+    return "You have unsaved changes!";
+};
+
+</script>
+
 </body>
 </html>
